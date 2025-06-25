@@ -1,0 +1,95 @@
+.head
+{
+    width: 100%;
+    transition: all 0.3s ease;
+    animation: fadeInDown 0.5s ease-out;
+    
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.headleft
+{
+    height: 60px;
+    border-bottom: 1px solid rgb(221, 216, 216);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.headright
+{
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(221, 216, 216);
+}
+.log
+{
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.log:hover
+{
+    border-bottom: 2px solid orange;
+}
+.tag
+{
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.tag:hover
+{
+    color: orange;
+}
+/* Dropdown styles */
+.dropdownContainer{
+  position: relative;
+  display: inline-block;
+}
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fefff5;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 100;
+}
+
+.dropdownMenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.dropdownMenu ul li {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdownMenu ul li:hover {
+  background-color: #f3f3f3;
+}
+
+.dropdownContainer:hover .dropdownMenu {
+  display: block;
+}
+
+.search
+{
+    height: 25px;
+    
+}

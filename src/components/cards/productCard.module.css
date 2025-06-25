@@ -1,0 +1,60 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  padding: 40px;
+  animation: fadeInDown 0.5s ease-out;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card {
+  width: 280px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: 200px; /* or adjust to your layout */
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+.card:hover .image {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.button {
+  margin-top: 10px;
+  background-color: #ff8c00;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e67700;
+}

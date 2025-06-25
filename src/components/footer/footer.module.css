@@ -1,0 +1,40 @@
+.footer {
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 60px;
+  gap: 30px;
+}
+
+.section {
+  flex: 1 1 200px;
+}
+
+.section h3 {
+  margin-bottom: 10px;
+  color: #ff8c00;
+}
+
+.section a {
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.section a:hover {
+  color: #ff8c00;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+}

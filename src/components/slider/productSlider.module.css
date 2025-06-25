@@ -1,0 +1,51 @@
+.sliderContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.image {
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.details {
+  text-align: left;
+  
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.discount {
+  display: inline-block;
+  margin-left: 10px;
+  color: red;
+  font-weight: 500;
+}
+
+.button {
+  margin-top: 10px;
+  background-color: #ff8c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e67700;
+}
