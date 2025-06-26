@@ -14,8 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+
+from storeapp.views import home
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
@@ -23,24 +29,37 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Furnishop API",
+      default_version='v1',
+      description="API documentation for your e-commerce site",
+      contact=openapi.Contact(email="sreelekshmisgit@gmail.com"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
+    path('', home, name='home'),
+
     path('admin/', admin.site.urls),
-    path('store/', include("storeapp.urls")),          
-    path('categories/', include("category_app.urls")),  
-    path('products/', include("product_app.urls")),    
-    path('cart/',include("cart_app.urls")) ,
-    path('orders/', include('order_app.urls')),
+    path('store/', include("storeapp.urls")),
+    path('categories/', include("category_app.urls")),
+    path('products/', include("product_app.urls")),
+    path('cart/', include("cart_app.urls")),
+    path('orders/', include("order_app.urls")),
+    path('api/payment/', include("payment_app.urls")),
+    path('api/', include("review_app.urls")),
+    path('api/shipping/', include("shipping_app.urls")),
 
-
-
-
-     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # JWT Auth
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
+    # Swagger & ReDoc
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

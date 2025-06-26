@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from django.conf import settings
+from drf_yasg import openapi
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,8 +45,12 @@ INSTALLED_APPS = [
     'product_app',
     'cart_app',
     'order_app',
+    'payment_app',
+    'review_app',
+    'shipping_app',
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg',
 
 
 ]
@@ -151,4 +157,25 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Dummy/Test Razorpay keys (test mode only)
+RAZORPAY_KEY_ID = 'rzp_test_abcd1234EFGH5678'       # Example only
+RAZORPAY_KEY_SECRET = 'XyZ9876543210secretKeyHere'  # Example only
+
+
+
+
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'furnishop.urls.schema_view',
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer <your_token>"'
+        }
+    }
+}
 

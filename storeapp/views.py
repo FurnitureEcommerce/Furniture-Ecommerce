@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import RegisterSerializer
@@ -8,6 +9,13 @@ from rest_framework.permissions import IsAuthenticated
 from .models import UserProfile, Address
 from .serializers import UserProfileSerializer, AddressSerializer
 from rest_framework.authtoken.models import Token
+
+
+
+
+def home(request):
+    return HttpResponse("<h1>Welcome to Furnishop API</h1><p>Visit <a href='/swagger/'>Swagger Docs</a></p>")
+
 
 
 
