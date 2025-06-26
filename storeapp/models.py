@@ -63,12 +63,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
-    dob = models.DateField()
+    gender = models.CharField(
+        max_length=10,
+        choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')],
+        null=True,
+        blank=True
+    )
+    dob = models.DateField(null=True, blank=True)
     profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
 
     def __str__(self):
-        return self.user.full_name
+        return self.user.email
+
 
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='addresses')
